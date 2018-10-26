@@ -5,5 +5,35 @@
   <%= @pool.volume %>
 </p>
 
+
+<div class="readings">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>pH</th>
+      <th>Alkalinity</th>
+      <th>Free Chlorine</th>
+      <th>Cyanuric Acid</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= link_to 'New Reading', new_pool_reading_path(@pool) %></td>
+    </tr>
+    <% @readings.each do |reading| %>
+    <tr>
+      <td><%= link_to reading.datetime, edit_pool_reading_path(@pool) %></td>
+      <td><%= reading.ph %></td>
+      <td><%= reading.alkalinity %></td>
+      <td><%= reading.chlorine %></td>
+      <td><%= reading.stabilizer %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 <%= link_to 'Edit', edit_pool_path(@pool) %> |
 <%= link_to 'Back', pools_path %>

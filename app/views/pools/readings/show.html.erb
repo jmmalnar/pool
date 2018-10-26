@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @reading.datetime %>
+</p>
+
+<p>
+  <strong>Ph:</strong>
+  <%= @reading.ph %>
+</p>
+
+<p>
+  <strong>Alkalinity:</strong>
+  <%= @reading.alkalinity %>
+</p>
+
+<p>
+  <strong>Chlorine:</strong>
+  <%= @reading.chlorine %>
+</p>
+
+<p>
+  <strong>Stabilizer:</strong>
+  <%= @reading.stabilizer %>
+</p>
+
+<p>
+  <strong>Pool:</strong>
+  <%= @reading.pool %>
+</p>
+
+<%= link_to 'Edit', edit_reading_path(@reading) %> |
+<%= link_to 'Back', readings_path %>

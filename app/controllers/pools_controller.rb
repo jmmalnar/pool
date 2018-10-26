@@ -10,6 +10,8 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
+    @pool = Pool.find(params[:id])
+    @readings = @pool.readings
   end
 
   # GET /pools/new
