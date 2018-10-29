@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_22_140308) do
+ActiveRecord::Schema.define(version: 2018_10_29_134138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2018_10_22_140308) do
     t.bigint "pool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "airtemp"
+    t.float "watertemp"
     t.index ["pool_id"], name: "index_readings_on_pool_id"
   end
 

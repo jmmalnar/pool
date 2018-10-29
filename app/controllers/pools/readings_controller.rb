@@ -74,6 +74,6 @@ class Pools::ReadingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reading_params
-      params.require(:reading).permit(:datetime, :ph, :alkalinity, :chlorine, :stabilizer, :pool_id)
+      params.require(:reading).permit(:datetime, :ph, :alkalinity, :chlorine, :stabilizer, :pool_id, :airtemp, :watertemp)
     end
 end

@@ -15,11 +15,13 @@
       <th>Alkalinity</th>
       <th>Free Chlorine</th>
       <th>Cyanuric Acid</th>
+      <th>Air Temperature</th>
+      <th>Water Temperature</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td><%= link_to 'New Reading', new_pool_reading_path(@pool) %></td>
+      <td><%= link_to '+ New Reading', new_pool_reading_path(@pool) %></td>
     </tr>
     <% @readings.each do |reading| %>
     <tr>
@@ -28,6 +30,8 @@
       <td><%= reading.alkalinity %></td>
       <td><%= reading.chlorine %></td>
       <td><%= reading.stabilizer %></td>
+      <td><%= reading.airtemp %></td>
+      <td><%= reading.watertemp %></td>
     </tr>
     <% end %>
     </tbody>
