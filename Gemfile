@@ -66,3 +66,6 @@ gem 'bootstrap', '>= 4.1.2'
 gem 'jquery-rails'
 
 gem 'mini_racer', platforms: :ruby
+
+gem 'chartkick'
+gem 'groupdate'

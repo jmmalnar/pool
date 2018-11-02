@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require jquery3
 //= require bootstrap
+//= require highcharts
+//= require chartkick
 //= require_tree .

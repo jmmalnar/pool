@@ -1,0 +1,47 @@
+<% ph_data = [] %>
+<% alkalinity_data = [] %>
+<% cyanuric_data = [] %>
+<% air_temp_data = [] %>
+<% water_temp_data = [] %>
+
+<% readings.each do |reading| %>
+    <% ph_data << [reading.datetime, reading.ph] %>
+    <% alkalinity_data << [reading.datetime, reading.alkalinity] %>
+    <% cyanuric_data << [reading.datetime, reading.stabilizer] %>
+    <% air_temp_data << [reading.datetime, reading.airtemp] %>
+    <% water_temp_data << [reading.datetime, reading.watertemp] %>
+<% end %>
+
+
+<div class="chart" id="ph_chart">
+  <%= line_chart [
+                         {name: 'pH', data: ph_data},
+                         {name: 'Alkalinity', data: alkalinity_data},
+                         {name: 'Cyanuric Acid', data: cyanuric_data},
+                         {name: 'Air Temp', data: air_temp_data},
+                         {name: 'Water Temp', data: water_temp_data}
+                 ],
+                 adapter: "highcharts", library: {
+          title: {
+                  text: 'Readings'
+          },
+          subtitle: {
+                  text: 'Click on the readings in the legend to toggle them on and off'
+          },
+          xAxis: {
+                  labels: {
+                          enabled: true,
+                  },
+                  crosshair: true
+          },
+          yAxis: {
+                  title: 'pH',
+                  labels: {
+                          format: '{value}°C'
+                  }
+          },
+          legend: {
+
+          }
+  } %>
+</div>

@@ -5,7 +5,7 @@ class Pools::ReadingsController < ApplicationController
   # GET /readings
   # GET /readings.json
   def index
-    @readings = @pool.readings.all
+    @readings = @pool.readings.all.sort_by { |reading| reading.datetime }
   end
 
   # GET /readings/1
@@ -15,7 +15,7 @@ class Pools::ReadingsController < ApplicationController
 
   # GET /readings/new
   def new
-    @reading = @pool.readings.new
+    @reading = @pool.readings.new(datetime: DateTime.now.strftime('%Y-%m-%dT%H:%M'))
   end
 
   # GET /readings/1/edit
@@ -57,7 +57,7 @@ class Pools::ReadingsController < ApplicationController
   def destroy
     @reading.destroy
     respond_to do |format|
-      format.html { redirect_to @pool, notice: 'Reading was successfully destroyed.' }
+      format.html { redirect_to @pool, notice: 'The reading for ' + @reading.datetime.to_s + ' was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

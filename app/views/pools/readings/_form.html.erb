@@ -11,42 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :datetime %>
-    <%= form.datetime_select :datetime %>
+  <div class="form-group field">
+    <%= form.label :datetime, 'Date of Reading' %>
+    <%= form.datetime_field(:datetime, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label :ph %>
-    <%= form.text_field :ph %>
+  <div class="form-group field">
+    <%= form.label :ph, 'pH' %>
+    <%= form.text_field(:ph, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label :alkalinity %>
-    <%= form.number_field :alkalinity %>
+  <div class="form-group field">
+    <%= form.label 'Alkalinity (ppm)' %>
+    <%= form.number_field(:alkalinity, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label :chlorine %>
-    <%= form.number_field :chlorine %>
+  <div class="form-group field">
+    <%= form.label 'Free Chlorine (ppm)' %>
+    <%= form.number_field(:chlorine, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label :stabilizer %>
-    <%= form.number_field :stabilizer %>
+  <div class="form-group field">
+    <%= form.label 'Stabilizer (ppm)' %>
+    <%= form.number_field(:stabilizer, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label 'Air Temperature' %>
-    <%= form.number_field :airtemp %>
+  <div class="form-group field">
+    <%= form.label 'Air Temperature (F)' %>
+    <%= form.number_field(:airtemp, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="field">
-    <%= form.label 'Water Temperature' %>
-    <%= form.number_field :watertemp %>
+  <div class="form-group field">
+    <%= form.label 'Water Temperature (F)' %>
+    <%= form.number_field(:watertemp, class: 'form-control col-md-6') %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit 'Submit', { class: 'btn btn-default' } %>
+    </div>
 <% end %>

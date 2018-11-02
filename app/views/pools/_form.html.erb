@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group field">
     <%= form.label :volume %>
-    <%= form.number_field :volume %>
+    <%= form.number_field(:volume, class: 'form-control') %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', { class: 'btn btn-default' } %>
   </div>
 <% end %>
