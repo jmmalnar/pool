@@ -1,4 +1,6 @@
 class Pools::ReadingsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_pool
   before_action :set_reading, only: [:show, :edit, :update, :destroy]
 

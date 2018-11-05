@@ -1,10 +1,11 @@
 class PoolsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_pool, only: [:show, :edit, :update, :destroy]
 
   # GET /pools
   # GET /pools.json
   def index
-    @pools = Pool.all
+    @pools = current_user.pools.all
   end
 
   # GET /pools/1
@@ -26,8 +27,7 @@ class PoolsController < ApplicationController
   # POST /pools
   # POST /pools.json
   def create
-    @pool = Pool.new(pool_params)
-    @pool.user = current_user
+    @pool = current_user.pools.new(pool_params)
 
     respond_to do |format|
       if @pool.save
