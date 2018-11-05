@@ -69,3 +69,7 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'chartkick'
 gem 'groupdate'
+
+# Upgrades for security vulnerabilities
+gem "loofah", ">= 2.2.3"
+gem "rubyzip", ">= 1.2.2"
