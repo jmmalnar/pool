@@ -1,47 +1,185 @@
 <% ph_data = [] %>
 <% alkalinity_data = [] %>
-<% cyanuric_data = [] %>
+<% stabilizer_data = [] %>
 <% air_temp_data = [] %>
 <% water_temp_data = [] %>
 
 <% readings.each do |reading| %>
     <% ph_data << [reading.datetime, reading.ph] %>
     <% alkalinity_data << [reading.datetime, reading.alkalinity] %>
-    <% cyanuric_data << [reading.datetime, reading.stabilizer] %>
+    <% stabilizer_data << [reading.datetime, reading.stabilizer] %>
     <% air_temp_data << [reading.datetime, reading.airtemp] %>
     <% water_temp_data << [reading.datetime, reading.watertemp] %>
 <% end %>
 
+<div class="card">
+  <div class="card-header">
+    <h3>Charts</h3>
+  </div>
+  <div class="card-body">
+    <p>View Charts:
+      <a href="#ph_chart" data-toggle="collapse" aria-expanded="false" aria-controls="ph_chart">pH</a> |
+      <a href="#alkalinity_chart" data-toggle="collapse" aria-expanded="false" aria-controls="alkalinity_chart">Alkalinity</a> |
+      <a href="#stabilizer_chart" data-toggle="collapse" aria-expanded="false" aria-controls="stabilizer_chart">Cyanuric Acid</a> |
+      <a href="#temp_chart" data-toggle="collapse" aria-expanded="false" aria-controls="temp_chart">Air and Water Temps</a> |
+      <a href="#all_readings_chart" data-toggle="collapse" aria-expanded="false" aria-controls="all_readings_chart">All Readings Combined</a> |
+      <a href=".open_all" data-toggle="collapse" aria-expanded="false" aria-controls="all_readings_chart">Open All Individually</a>
+    </p>
+    <div class="chart collapse" id="all_readings_chart">
+      <%= line_chart [
+                             {name: 'pH', data: ph_data},
+                             {name: 'Alkalinity', data: alkalinity_data},
+                             {name: 'Cyanuric Acid', data: stabilizer_data},
+                             {name: 'Air Temp', data: air_temp_data},
+                             {name: 'Water Temp', data: water_temp_data}
+                     ],
+                     adapter: "highcharts", library: {
+                      title: {
+                              text: 'All Readings'
+                      },
+                      subtitle: {
+                              text: 'Click on the readings in the legend to toggle them on and off'
+                      },
+                      xAxis: {
+                              labels: {
+                                      enabled: true,
+                              },
+                              crosshair: true
+                      },
+                      yAxis: {
+                              labels: {
+                                      enabled: true,
+                                      format: '{value}°C'
+                              },
+                              crosshair: true
+                      },
+                      legend: {
 
-<div class="chart" id="ph_chart">
-  <%= line_chart [
-                         {name: 'pH', data: ph_data},
-                         {name: 'Alkalinity', data: alkalinity_data},
-                         {name: 'Cyanuric Acid', data: cyanuric_data},
-                         {name: 'Air Temp', data: air_temp_data},
-                         {name: 'Water Temp', data: water_temp_data}
-                 ],
-                 adapter: "highcharts", library: {
-          title: {
-                  text: 'Readings'
-          },
-          subtitle: {
-                  text: 'Click on the readings in the legend to toggle them on and off'
-          },
-          xAxis: {
-                  labels: {
-                          enabled: true,
-                  },
-                  crosshair: true
-          },
-          yAxis: {
-                  title: 'pH',
-                  labels: {
-                          format: '{value}°C'
-                  }
-          },
-          legend: {
+                      }
+              } %>
+    </div>
 
-          }
-  } %>
+    <div class="chart collapse open_all" id="ph_chart">
+      <%= line_chart [
+                             {name: 'pH', data: ph_data}
+                     ],
+                     adapter: "highcharts", library: {
+                      title: {
+                              text: 'pH'
+                      },
+                      xAxis: {
+                              labels: {
+                                      enabled: true,
+                              },
+                              crosshair: true
+                      },
+                      yAxis: {
+                              title: {
+                                      text: 'pH Level'
+                              },
+                              labels: {
+                                      format: '{value}°C'
+                              },
+                              crosshair: true,
+                              floor: 6
+                      },
+                      legend: {
+                              enabled: false
+                      }
+              } %>
+    </div>
+
+    <div class="chart collapse open_all" id="alkalinity_chart">
+      <%= line_chart [
+                             {name: 'alkalinity', data: alkalinity_data}
+                     ],
+                     adapter: "highcharts", library: {
+                      title: {
+                              text: 'Alkalinity'
+                      },
+                      xAxis: {
+                              labels: {
+                                      enabled: true,
+                              },
+                              crosshair: true
+                      },
+                      yAxis: {
+                              title: {
+                                      text: 'ppm'
+                              },
+                              labels: {
+                                      enabled: true
+                              },
+                              crosshair: true,
+                              floor: 50
+                      },
+                      legend: {
+                              enabled: false
+                      }
+              } %>
+    </div>
+
+    <div class="chart collapse open_all" id="stabilizer_chart">
+      <%= line_chart [
+                             {name: 'stabilizer', data: stabilizer_data}
+                     ],
+                     adapter: "highcharts", library: {
+                      title: {
+                              text: 'Stabilizer'
+                      },
+                      xAxis: {
+                              labels: {
+                                      enabled: true,
+                              },
+                              crosshair: true
+                      },
+                      yAxis: {
+                              title: {
+                                      text: 'ppm'
+                              },
+                              labels: {
+                                      enabled: true
+                              },
+                              crosshair: true
+                      },
+                      legend: {
+                              enabled: false
+                      }
+              } %>
+    </div>
+
+    <div class="chart collapse open_all" id="temp_chart">
+      <%= line_chart [
+                             {name: 'Air Temp', data: air_temp_data},
+                             {name: 'Water Temp', data: water_temp_data}
+                     ],
+                     adapter: "highcharts", library: {
+                      title: {
+                              text: 'Air and Water Temperatures'
+                      },
+                      subtitle: {
+                              text: 'Click on the readings in the legend to toggle them on and off'
+                      },
+                      xAxis: {
+                              labels: {
+                                      enabled: true,
+                              },
+                              crosshair: true
+                      },
+                      yAxis: {
+                              title: {
+                                      text: 'Temperature (°F)'
+                              },
+                              labels: {
+                                      format: '{value}°C'
+                              },
+                              crosshair: true,
+                              ceiling: 120
+                      },
+                      legend: {
+
+                      }
+              } %>
+    </div>
+  </div>
 </div>
