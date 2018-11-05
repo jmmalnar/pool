@@ -22,6 +22,10 @@ class Pools::ReadingsController < ApplicationController
 
   # GET /readings/1/edit
   def edit
+    if current_user.id != @reading.pool.user_id
+      flash[:alert] = "You don't have access to that reading"
+      redirect_to @pool
+    end
   end
 
   # POST /readings

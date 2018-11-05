@@ -13,6 +13,10 @@ class PoolsController < ApplicationController
   def show
     @pool = Pool.find(params[:id])
     @readings = @pool.readings
+    if current_user.id != @pool.user_id
+      flash[:alert] = "You don't have access to that pool"
+      redirect_to root_path
+    end
   end
 
   # GET /pools/new

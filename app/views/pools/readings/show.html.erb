@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Datetime:</strong>
   <%= @reading.datetime %>
@@ -35,5 +33,5 @@
   <%= @reading.watertemp %>
 </p>
 
-<%= link_to 'Edit', edit_reading_path(@reading) %> |
-<%= link_to 'Back', readings_path %>
+<%= link_to 'Edit', edit_pool_reading_path(@pool, @reading) %> |
+<%= link_to 'Back', @pool %>
