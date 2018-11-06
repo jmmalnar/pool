@@ -63,7 +63,7 @@ class PoolsController < ApplicationController
   def destroy
     @pool.destroy
     respond_to do |format|
-      format.html { redirect_to pools_url, notice: 'Pool was successfully destroyed.' }
+      format.html { redirect_to pools_url, notice: 'Pool was successfully deleted.' }
       format.json { head :no_content }
     end
   end

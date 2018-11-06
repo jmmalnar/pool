@@ -1,9 +1,10 @@
-<h1>Pools</h1>
+<h1>My Pools</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Volume</th>
+      <th>Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +13,10 @@
     <% @pools.each do |pool| %>
       <tr>
         <td><%= pool.volume %></td>
+        <td>Freshwater</td>
         <td><%= link_to 'Show', pool %></td>
         <td><%= link_to 'Edit', edit_pool_path(pool) %></td>
-        <td><%= link_to 'Destroy', pool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete this Pool', pool, method: :delete, data: { confirm: 'Are you sure you want to delete this pool?  You will loose all of the readings for this pool as well.  This action cannot be undone!' } %></td>
       </tr>
     <% end %>
   </tbody>
